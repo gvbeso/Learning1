@@ -1,0 +1,85 @@
+FloatLayout:
+
+    MDScrollView:
+        size_hint:0.9,0.8
+        pos_hint:{'center_x':0.5,'center_y':0.5}
+
+        MDList:
+            id: scroll
+            size_hint:0.9,0.8
+
+
+    MDLabel:
+        markup:True
+        text: "[b][size=36]To Do[/b]"
+        pos_hint: {'x':.45,'y':.45}
+
+    MDFloatingActionButton:
+        icon: "plus"
+        md_bg_color: app.theme_cls.primary_color
+        pos_hint: {'x':.9,'y':.1}
+        on_release: app.show_alert_dialog()
+
+<Dialogcontent>
+    orientation: "vertical"
+    spacing: "12dp"
+    size_hint_y: None
+    height: "200dp"
+
+
+    MDTextField:
+        id:notetxt
+        hint_text: "Add Note"
+
+    GridLayout:
+        rows:1
+
+
+        MDTextField:
+            id:desctxt
+            hint_text: "Descriotion"
+
+
+        MDIconButton:
+            icon: "calendar"
+            on_release: root.show_date_picker()
+    GridLayout:
+        rows:1
+
+        MDLabel:
+            id:labeldate
+            text:"fdfd"
+
+
+        MDLabel:
+            id:rec
+
+
+    BoxLayout:
+        orientation: 'horizontal'
+        MDRaisedButton:
+            on_release: (app.dialog_save(notetxt,desctxt,labeldate,rec))
+            text: "Save"
+        MDFlatButton:
+            text: "Cancel"
+            on_release: app.dialog_cancel()
+
+
+<ListItemWithCheckbox>:
+    id: toka
+
+
+
+    IconRightWidget:
+        icon: "pencil"
+        on_release: root.EditTokaitme(toka)
+
+    IconRightWidget:
+        icon: root.icon
+        on_release: root.DeleteTokaitme(toka)
+
+
+    LeftCheckbox:
+
+
+

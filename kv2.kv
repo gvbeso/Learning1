@@ -1,0 +1,53 @@
+AFloatLayout:
+    MDLabel:
+        markup:True
+        text: "[b][size=36]To Do[/b]"
+        pos_hint: {'x':.45,'y':.45}
+
+    MDFloatingActionButton:
+        icon: "plus"
+        md_bg_color: app.theme_cls.primary_color
+        pos_hint: {'x':.9,'y':.1}
+        on_release: app.show_alert_dialog()
+
+<Dialogcontent>
+    orientation: "vertical"
+    spacing: "12dp"
+    size_hint_y: None
+    height: "200dp"
+
+
+    MDTextField:
+        id:notetxt
+        hint_text: "Add Note"
+
+    GridLayout:
+        rows:1
+
+
+        MDTextField:
+            id:desctxt
+            hint_text: "Descriotion"
+
+        MDIconButton:
+            icon: "calendar"
+            on_release: root.show_date_picker()
+
+
+    MDLabel:
+        id:labeldate
+        text:"fdfd"
+
+    BoxLayout:
+        orientation: 'horizontal'
+        MDRaisedButton:
+            on_release: (app.dialog_save(notetxt.text,desctxt.text,labeldate.text),app.dialog_cancel())
+            text: "Save"
+        MDFlatButton:
+            text: "Cancel"
+            on_release: app.dialog_cancel()
+
+
+
+
+
